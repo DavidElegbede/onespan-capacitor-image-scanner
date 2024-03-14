@@ -1,0 +1,1 @@
+# onespan-capacitor-image-scanner

@@ -1,0 +1,11 @@
+framework module MSSImageScanner {
+  umbrella header "MSSImageScanner.h"
+
+  export *
+  module * { export * }
+}
+
+module MSSImageScanner.Swift {
+    header "MSSImageScanner-Swift.h"
+    requires objc
+}

@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-item>
+      <ion-label>Extra Vibrate</ion-label>
+      <ion-select [(ngModel)]="extra_vibrate">
+        <ion-select-option value="true">True</ion-select-option>
+        <ion-select-option value="false">False</ion-select-option>
+        <!-- Add more options as needed -->
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Extra Code Type</ion-label>
+      <ion-select [(ngModel)]="extra_code_type">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <!-- Add more options as needed -->
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Extra Scanner Overlay</ion-label>
+      <ion-select [(ngModel)]="extra_scanner_overlay">
+        <ion-select-option value="true">True</ion-select-option>
+        <ion-select-option value="false">False</ion-select-option>
+        <!-- Add more options as needed -->
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Extra Scanner Overlay Color</ion-label>
+      <ion-select [(ngModel)]="extra_scanner_overlay_color">
+        <ion-select-option value="#0000FF">Blue</ion-select-option>
+        <ion-select-option value="#FF0000">Red</ion-select-option>
+        <ion-select-option value="#00FF00">Green</ion-select-option>
+        <ion-select-option value="#000000">Black</ion-select-option>
+        <!-- Add more options as needed -->
+      </ion-select>
+    </ion-item>
+    
+    <ion-button expand="full" (click)="launchSystemCamera()">
+      Scan QR Code
+    </ion-button>
+  </div>
+  
+</ion-content>

@@ -1,0 +1,75 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MSSImageScanner
+import Foundation
+@_exported import MSSImageScanner
+import Swift
+import UIKit
+import _Concurrency
+public enum ScannerError : Foundation.LocalizedError, Swift.Equatable {
+  case internalError
+  case inputParameterNull
+  case cameraNotAvailable
+  case permissionDenied
+  case invalidImage
+  case imageTooBig
+  case invalidCodeType
+  case unsupported(code: Swift.Int)
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var failureReason: Swift.String? {
+    get
+  }
+  public var recoverySuggestion: Swift.String? {
+    get
+  }
+  public static func == (a: MSSImageScanner.ScannerError, b: MSSImageScanner.ScannerError) -> Swift.Bool
+}
+extension MSSImageScanner.ScannerError : Foundation.CustomNSError {
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+  public static var errorDomain: Swift.String {
+    get
+  }
+}
+public protocol ScannerDelegate : AnyObject {
+  func qrCodeScannerSDKController(_ controller: UIKit.UIViewController, didScan result: Swift.String, codeType: MSSImageScanner.CodeType)
+  func qrCodeScannerSDKControllerDidCancel(_ controller: UIKit.UIViewController)
+  func qrCodeScannerSDKController(_ controller: UIKit.UIViewController, didReceive error: MSSImageScanner.ScannerError)
+}
+public struct CodeType : Swift.OptionSet {
+  public static let qrCode: MSSImageScanner.CodeType
+  public static let crontoCode: MSSImageScanner.CodeType
+  public static let all: MSSImageScanner.CodeType
+  public let rawValue: Swift.Int
+  public init(rawValue: Swift.Int)
+  public typealias ArrayLiteralElement = MSSImageScanner.CodeType
+  public typealias Element = MSSImageScanner.CodeType
+  public typealias RawValue = Swift.Int
+}
+public enum ScannerConstants {
+  public static let imageMaxSize: Swift.Int
+}
+@_hasMissingDesignatedInitializers public class QRCodeScannerSDK {
+  public static var version: Swift.String {
+    get
+  }
+  public static func getQRCodeScannerSDKViewController(delegate: MSSImageScanner.ScannerDelegate, vibrate: Swift.Bool, codeType: MSSImageScanner.CodeType, image: UIKit.UIImage?) throws -> UIKit.UIViewController
+  public static func getQRCodeScannerSDKViewController(delegate: MSSImageScanner.ScannerDelegate, vibrate: Swift.Bool, codeType: MSSImageScanner.CodeType, image: UIKit.UIImage?, scannerOverlay: Swift.Bool, scannerOverlayColor: UIKit.UIColor?) throws -> UIKit.UIViewController
+  public static func decodeImage(_ image: UIKit.UIImage, codeType: MSSImageScanner.CodeType) throws -> MSSImageScanner.QRCodeScannerSDKDecodingResultData
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class QRCodeScannerSDKDecodingResultData {
+  public var result: Swift.String {
+    get
+  }
+  public var codeType: MSSImageScanner.CodeType {
+    get
+  }
+  @objc deinit
+}
